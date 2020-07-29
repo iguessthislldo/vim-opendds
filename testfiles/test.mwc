@@ -1,0 +1,45 @@
+// vim: filetype=mpc:spell
+
+// Checking Comment: TODO should be highlighted and these words should be
+// marked as misspelled: wrog spelld worrdz.
+
+workspace {
+  dir1
+  dir2
+
+  // exclude this_dir for all project types
+  exclude {
+    dir2/this_dir
+  }
+
+  // exclude other_dir for vc6, vc71, vc8, and vc9 types
+  exclude(vc6, vc71, vc8, vc9) {
+    dir2/other_dir
+  }
+
+  // exclude unix_only for every type except gnuace and make
+  exclude(!gnuace, !make) {
+    dir2/unix_only
+  }
+
+  // exclude non_window for every windows project type
+  exclude(prop:windows) {
+    dir2/non_windows
+  }
+
+  // exclude microsoft_only for all non-microsoft project types
+  exclude(!prop:microsoft) {
+    dir2/microsoft_only
+  }
+
+  dir3
+
+  // Associate the name "other" with dir3
+  associate(other) {
+    dir3
+  }
+
+  specific(rpmspec) {
+    rpm_version = 1.0
+  }
+}
