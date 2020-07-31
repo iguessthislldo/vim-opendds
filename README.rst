@@ -18,6 +18,7 @@ here are the settings that can be put directly in your ``.vimrc`` or
 ``init.vim`` file without installing this plugin:
 
 .. code-block:: vim
+
     " Use two spaces instead of tab.
     set tabstop=2 shiftwidth=2 expandtab
 
@@ -75,6 +76,7 @@ this easy. For vim-plug specifically, once it is set up, add this to your
 ``.vimrc`` or ``init.vim`` file within the ``Plug`` calls.
 
 .. code-block:: vim
+
     Plug 'iguessthislldo/vim-opendds'
 
 Then run `:PlugInstall` and the plugin will be downloaded and installed.
