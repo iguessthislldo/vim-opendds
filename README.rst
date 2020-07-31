@@ -3,8 +3,10 @@ vim-opendds
 ###########
 
 ``vim-opendds`` is a vim plugin with a collection of settings and language
-support for vim to make working with `OpenDDS
-<https://github.com/objectcomputing/OpenDDS>`_ easier.
+support to make working with `OpenDDS
+<https://github.com/objectcomputing/OpenDDS>`_, `ACE/TAO
+<https://github.com/DOCGroup/ACE_TAO>`_, and `MPC
+<https://github.com/DOCGroup/MPC>`_ easier.
 
 ********
 Features
