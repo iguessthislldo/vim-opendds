@@ -1,0 +1,23 @@
+const string the_constant = "Hello World\n";
+
+@topic
+struct the_struct {
+  @key long value;
+};
+
+@some_annotation
+enum the_enum {
+  x_value,
+  y_value
+};
+
+union the_union switch(EnumType) {
+case x_value:
+  short x;
+default:
+  char y;
+}
+
+local interface the_interface {
+  the_struct get_struct(in long in_arg, out long out_arg);
+};
