@@ -10,8 +10,17 @@
 
 // Keyword in comment: default
 
-#include <dds/DdsDcps.idl>
 #include "local.idl"
+
+#include <dds/DdsDcps.idl>
+
+#define MACRO "String that should not be highlighted"
+
+#ifdef MACRO
+#  define something "String that should not be highlighted"
+#  include "local.idl"
+#  include <dds/DdsDcps.idl>
+#endif
 
 typedef long ArrayType[10];
 
@@ -79,4 +88,3 @@ struct struct_with_errors {
    long odd_number_of_spaces_in_indent;
   int using_int;
 }
-typedef TypeFlag BitsetTypeFlag; // Unused. No flags apply

@@ -1,7 +1,6 @@
 " TODO:
 "   - Move misc keywords that have more appropriate places
 "   - Fix issue with number in middle of id
-"   - Highlight preproccessor Strings, Non-local Includes
 "   - Highlight interface, struct, union, enum members?
 "   - Enable folding
 "   - Almost all of these could possibly solved by suppying a real syntax like
@@ -12,7 +11,10 @@ if exists("b:current_syntax")
 endif
 
 " Preprocessor
-syntax match opendds_idl_preproc "#.*"
+syntax match opendds_idl_preproc "^#.*" contains=opendds_idl_include
+syntax match opendds_idl_include "^#\s*include"
+  \ skipwhite contained nextgroup=
+    \ opendds_idl_include_path_literal_local,opendds_idl_include_path_literal_system
 
 " Comments
 syntax keyword opendds_idl_todo contained TODO FIXME XXX
@@ -33,6 +35,8 @@ syntax match opendds_idl_char_literal display
 syntax match opendds_idl_escaped_chars contained "\\\([ntvbrfa\\?'\"]\|o[0-7]\+\|x[a-f0-9]\+\)"
 syntax region opendds_idl_string_literal start="L\?\"" end="\"" skip="\\\""
   \ contains=@Spell,opendds_idl_escaped_chars
+syntax region opendds_idl_include_path_literal_local contained start="\"" end="\""
+syntax region opendds_idl_include_path_literal_system contained start="<" end=">"
 
 " Whitespace Errors
 syntax match opendds_idl_errors display excludenl "\s\+$" " Trailing space
@@ -82,6 +86,7 @@ syntax keyword opendds_idl_keyword
 syntax case match
 
 highlight default link opendds_idl_preproc PreProc
+highlight default link opendds_idl_include PreProc
 highlight default link opendds_idl_todo Todo
 highlight default link opendds_idl_comment Comment
 highlight default link opendds_idl_errors Error
@@ -93,6 +98,8 @@ highlight default link opendds_idl_float_literal Float
 highlight default link opendds_idl_char_literal Character
 highlight default link opendds_idl_escaped_chars Special
 highlight default link opendds_idl_string_literal String
+highlight default link opendds_idl_include_path_literal_local String
+highlight default link opendds_idl_include_path_literal_system String
 highlight default link opendds_idl_keyword Keyword
 highlight default link opendds_idl_identifier Identifier
 highlight default link opendds_idl_annotation_identifier Function
