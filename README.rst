@@ -55,10 +55,10 @@ This is a small example:
 MPC Files Support
 =================
 
-Support for `MPC <https://github.com/DOCGroup/MPC>`_ ``mpc``, ``mpb``, and
-``mwc`` files.
+Basic Support for `MPC <https://github.com/DOCGroup/MPC>`_ ``mpc``, ``mpb``,
+and ``mwc`` files.
 
-**TODO: More Info, Preview**
+.. image:: docs/mpc.png
 
 Miscellaneous
 =============

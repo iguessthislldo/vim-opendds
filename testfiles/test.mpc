@@ -3,11 +3,13 @@
 // Checking Comment: TODO should be highlighted and these words should be
 // marked as misspelled: wrog spelld worrdz.
 
-project {
+project(TheProject*): base1, base2, \
+    base3, \
+    base4 {
   includes += value
   custom_value = 1
   another_value = line one \
-    line two \
+    line two $var \
     line three
   exename = something
   // Comment
@@ -15,10 +17,27 @@ project {
   Define_Custom {
     // Comment
     name = value
+    another += <%highlight_proproc%> highlight string $highlight_proproc highlight string $(highlight_preproc)
   }
 
   Source_Files {
+    options = -DMACRO
     a.cpp
     b.cpp
+  }
+
+  verbatim(gnuace, postinstall) {
+"	some gnu make stuff"
+$SHOULD_NOT_BE_HIGHLIGHTED
+// Not a real comment
+  }
+}
+
+feature(afeat) {
+  avoids += another_feature
+  specific(prop:windows) {
+    libpaths += $(SOMETHING)/WINDOWSY
+  } else {
+    libpaths += $(SOMETHING)/BETTER
   }
 }

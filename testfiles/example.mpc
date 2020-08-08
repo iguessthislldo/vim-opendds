@@ -1,0 +1,19 @@
+// This is a comment, probably
+project(*mpc) : somebase {
+  expand(LIB_ROOT) {
+    $LIB_ROOT
+    /usr
+  }
+  includes += $(LIB_ROOT)/include \
+    $(LIB_ROOT)/super_duper_include
+  requires += something_else
+  Source_Files {
+    source.cpp
+  }
+  verbatim(gnuace, bottom, 1) {
+    # Inserting some stuff for make
+  }
+  specific (vc9, vc10, vc11, vc12, vc14, vs2017, vs2019, nmake) {
+    compile_flags += /bigobj
+  }
+}
